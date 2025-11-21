@@ -1,6 +1,6 @@
 # Serverless Fight Night Bot
 
-Serverless Discord bot that keeps your community up to speed on UFC fight nights—built on Cloudflare Workers with [Bun](https://bun.com) and [Dressed](https://dressed.js.org) for slash-command ergonomics.
+Serverless Discord bot that keeps your community up to speed on UFC fight nights—built on Vercel with [Bun](https://bun.com) and [Dressed](https://dressed.js.org) for slash-command ergonomics.
 
 ## Quick Links
 
@@ -37,9 +37,11 @@ Dev-only (registered when `GUILD_ID` env is present):
 ## Getting Started
 
 1. `bun install`
-2. Configure environment (see below) in `.env` or via Wrangler secrets.
+2. Configure environment (see below) in `.env` or via Vercel dashboard.
 3. Register commands and start local dev: `bun .dressed`
-4. Deploy with Wrangler once you are ready: `bun build-bot && wrangler deploy`
+4. Deploy to Vercel via GitHub or CLI: `vercel --prod`
+
+See [VERCEL_MIGRATION.md](./VERCEL_MIGRATION.md) for detailed deployment instructions.
 
 ### Required Environment Variables
 
@@ -48,11 +50,12 @@ Dev-only (registered when `GUILD_ID` env is present):
 | `DISCORD_APP_ID`             | Discord application ID for command registration.                 |
 | `DISCORD_PUBLIC_KEY`         | Discord public key for interaction verification.                 |
 | `DISCORD_TOKEN`              | Bot token used for REST calls and dev utilities.                 |
+| `VERCEL_CRON_SECRET`         | Secret for authenticating cron job requests.                     |
 | `RUN_AT` (optional)          | Default notification hour (0-23) when `/settings hour` is unset. |
 | `TZ` (optional)              | Default timezone for guilds that have not configured one.        |
 | `ESPN_USER_AGENT` (optional) | Overrides the default user agent for ESPN API calls.             |
 
-Cloudflare KV (`FIGHT_NIGHT_SETTINGS`) stores guild preferences and is injected via `wrangler.jsonc`.
+> **Note**: Guild preferences are stored in Vercel KV (or external database). Set up storage via [VERCEL_MIGRATION.md](./VERCEL_MIGRATION.md).
 
 ## Using the Bot
 
