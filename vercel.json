@@ -1,4 +1,10 @@
 {
   "buildCommand": "bun dressed build",
-  "outputDirectory": ".dressed"
+  "outputDirectory": ".dressed",
+  "crons": [
+    {
+      "path": "/api/cron",
+      "schedule": "0 * * * *"
+    }
+  ]
 }

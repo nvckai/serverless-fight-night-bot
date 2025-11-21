@@ -1,0 +1,9 @@
+.git
+.gitignore
+README.md
+VERCEL_MIGRATION.md
+node_modules
+.env
+.env.local
+.env.*.local
+wrangler.jsonc
