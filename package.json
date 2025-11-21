@@ -6,6 +6,7 @@
   "scripts": {
     "format": "prettier --write .",
     "build-bot": "bun dressed build -ir",
+    "build": "bun dressed build",
     "dev": "bun .dressed"
   },
   "devDependencies": {
